@@ -1,0 +1,50 @@
+[gd_scene load_steps=3 format=3 uid="uid://wbcmkviyhf7t"]
+
+[ext_resource type="Script" uid="uid://6jtu7e5fxq7i" path="res://ability.gd" id="1_jfqo8"]
+[ext_resource type="Texture2D" uid="uid://c6mlblookc0qg" path="res://icon.svg" id="1_s663g"]
+
+[node name="AbilityDice" type="Control"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+script = ExtResource("1_jfqo8")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.5
+offset_top = -38.5
+offset_right = 40.5
+offset_bottom = 38.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("1_s663g")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+text = "Some Text"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1

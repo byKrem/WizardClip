@@ -1,0 +1,91 @@
+[gd_scene load_steps=8 format=3 uid="uid://1v5rk50a5o1h"]
+
+[ext_resource type="PackedScene" uid="uid://wbcmkviyhf7t" path="res://Scenes/UI/ability_dice.tscn" id="1_lb5qx"]
+[ext_resource type="Script" uid="uid://b73did8tphcyv" path="res://Scripts/ClipAbilities/AttackAbility.gd" id="2_tgjrc"]
+[ext_resource type="Script" uid="uid://dx48enfgcnswf" path="res://Scripts/ClipAbilities/DefenceAbility.gd" id="3_7r1uo"]
+[ext_resource type="Script" uid="uid://dnysjqws160cu" path="res://Scripts/ClipAbilities/SkipAbility.gd" id="4_8f6cr"]
+
+[sub_resource type="Resource" id="Resource_tgjrc"]
+script = ExtResource("2_tgjrc")
+value = 2
+name = "Attack"
+weight = 2
+metadata/_custom_type_script = "uid://b73did8tphcyv"
+
+[sub_resource type="Resource" id="Resource_7r1uo"]
+script = ExtResource("3_7r1uo")
+value = 5
+name = "Defence"
+weight = 1
+metadata/_custom_type_script = "uid://dx48enfgcnswf"
+
+[sub_resource type="Resource" id="Resource_8f6cr"]
+script = ExtResource("4_8f6cr")
+name = "Skip"
+weight = -1
+metadata/_custom_type_script = "uid://dnysjqws160cu"
+
+[node name="AbilitiesMenu" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "Availaible Abilities"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer/MarginContainer"]
+layout_mode = 2
+columns = 3
+
+[node name="AbilityDice" parent="VBoxContainer/MarginContainer/GridContainer" instance=ExtResource("1_lb5qx")]
+layout_mode = 2
+ClipAbility = SubResource("Resource_tgjrc")
+
+[node name="AbilityDice4" parent="VBoxContainer/MarginContainer/GridContainer" instance=ExtResource("1_lb5qx")]
+layout_mode = 2
+ClipAbility = SubResource("Resource_tgjrc")
+
+[node name="AbilityDice5" parent="VBoxContainer/MarginContainer/GridContainer" instance=ExtResource("1_lb5qx")]
+layout_mode = 2
+ClipAbility = SubResource("Resource_tgjrc")
+
+[node name="AbilityDice6" parent="VBoxContainer/MarginContainer/GridContainer" instance=ExtResource("1_lb5qx")]
+layout_mode = 2
+ClipAbility = SubResource("Resource_tgjrc")
+
+[node name="AbilityDice2" parent="VBoxContainer/MarginContainer/GridContainer" instance=ExtResource("1_lb5qx")]
+layout_mode = 2
+ClipAbility = SubResource("Resource_7r1uo")
+
+[node name="AbilityDice3" parent="VBoxContainer/MarginContainer/GridContainer" instance=ExtResource("1_lb5qx")]
+layout_mode = 2
+ClipAbility = SubResource("Resource_8f6cr")
