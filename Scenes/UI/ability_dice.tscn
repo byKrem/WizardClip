@@ -1,11 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://wbcmkviyhf7t"]
 
-[ext_resource type="Script" uid="uid://6jtu7e5fxq7i" path="res://ability.gd" id="1_jfqo8"]
+[ext_resource type="Script" uid="uid://6jtu7e5fxq7i" path="res://Scenes/UI/AbilityCell.gd" id="1_jfqo8"]
 [ext_resource type="Texture2D" uid="uid://c6mlblookc0qg" path="res://icon.svg" id="1_s663g"]
 
-[node name="AbilityDice" type="Control"]
+[node name="AbilityDice" type="Panel"]
 custom_minimum_size = Vector2(100, 100)
-layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
