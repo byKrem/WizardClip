@@ -1,4 +1,7 @@
 extends MarginContainer
+class_name AbilityInventory
+
+# TODO: Keep track of what abilities contains
 
 # In context of [AbilityCell] entity this variable is [AbilityCell] itself
 # So it can be showed or hided
@@ -12,3 +15,13 @@ func _notification(what: int) -> void:
 			if data_backup != null:
 				data_backup.preview_data.show()
 				data_backup = null
+
+func get_abilities() -> Array[BaseClipAbility]:
+	var ability_dices: Array[Node] = $GridContainer.get_children()
+	var result: Array[BaseClipAbility]
+	
+	for ability_dice in ability_dices:
+		if ability_dice is AbilityDice:
+			result.append(ability_dice.ClipAbility)
+	
+	return result

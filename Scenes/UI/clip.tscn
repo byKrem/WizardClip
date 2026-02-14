@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://ddbce83um8qp7"]
+
+[ext_resource type="PackedScene" uid="uid://wbcmkviyhf7t" path="res://Scenes/UI/ability_dice.tscn" id="1_mchha"]
+[ext_resource type="Script" uid="uid://dd0otapspmn3q" path="res://Scenes/UI/clip.gd" id="1_tmx23"]
+[ext_resource type="PackedScene" uid="uid://cr0njc1ragx4x" path="res://Scenes/UI/ability_inventory.tscn" id="2_hhg52"]
+
+[node name="Clip" type="Panel"]
+anchors_preset = -1
+anchor_right = 0.095
+anchor_bottom = 0.332
+offset_right = 0.55999
+offset_bottom = -0.136017
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_tmx23")
+
+[node name="AbilityInventory" parent="." instance=ExtResource("2_hhg52")]
+layout_mode = 0
+
+[node name="GridContainer" parent="AbilityInventory" index="0"]
+columns = 1
+
+[node name="AbilityDice" parent="AbilityInventory/GridContainer" index="0" instance=ExtResource("1_mchha")]
+layout_mode = 2
+
+[node name="AbilityDice2" parent="AbilityInventory/GridContainer" index="1" instance=ExtResource("1_mchha")]
+layout_mode = 2
+
+[editable path="AbilityInventory"]
