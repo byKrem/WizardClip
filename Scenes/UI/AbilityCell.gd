@@ -4,38 +4,36 @@ class_name AbilityDice
 @export var ClipAbility : BaseClipAbility
 @onready var texture_rect: TextureRect = $VBoxContainer/TextureRect
 @onready var rich_text_label: RichTextLabel = $VBoxContainer/RichTextLabel
+@onready var preview_data: Control = $VBoxContainer
 
 func _ready() -> void:
-	_update_resource(ClipAbility)
+	update_resource(ClipAbility)
 
-func _update_resource(new_clip_ability : BaseClipAbility) -> void:
+func update_resource(new_clip_ability : BaseClipAbility) -> void:
 	if new_clip_ability == null:
+		ClipAbility = null
 		rich_text_label.clear()
 		texture_rect.texture = null
 		return
 	
 	ClipAbility = new_clip_ability
-	$VBoxContainer.show()
+	preview_data.show()
 	
 	rich_text_label.text = new_clip_ability.name
-	if new_clip_ability.texture != null:
+	if new_clip_ability.texture != null:	
 		texture_rect.texture = new_clip_ability.texture
 
 func _make_preview() -> Control:
-	var preview_node = $VBoxContainer.duplicate()
+	var preview = preview_data.duplicate()
 	
-	$VBoxContainer.hide()
+	preview_data.hide()
 	
-	return preview_node
+	return preview
 
 func _get_drag_data(at_position: Vector2) -> Variant:
-	var data = ClipAbility
-	
-	ClipAbility = null
-	
 	set_drag_preview(_make_preview())
 	
-	return data
+	return self
 
 func _can_drop_data(at_position: Vector2, data: Variant) -> bool:
 	# In this context [ClipAbility] is the cell where I want to drop smth.
@@ -47,5 +45,6 @@ func _can_drop_data(at_position: Vector2, data: Variant) -> bool:
 	return true
 
 func _drop_data(at_position: Vector2, data: Variant) -> void:
-	if data is BaseClipAbility:
-		_update_resource(data)
+	if data is AbilityDice:
+		update_resource(data.ClipAbility)
+		data.update_resource(null)
