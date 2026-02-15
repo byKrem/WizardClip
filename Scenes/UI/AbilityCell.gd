@@ -3,7 +3,7 @@ class_name AbilityDice
 
 @export var ClipAbility : BaseClipAbility
 @onready var texture_rect: TextureRect = $VBoxContainer/TextureRect
-@onready var rich_text_label: RichTextLabel = $VBoxContainer/RichTextLabel
+@onready var ability_name_label: Label = $VBoxContainer/Label
 @onready var preview_data: Control = $VBoxContainer
 
 func _ready() -> void:
@@ -12,14 +12,14 @@ func _ready() -> void:
 func update_resource(new_clip_ability : BaseClipAbility) -> void:
 	if new_clip_ability == null:
 		ClipAbility = null
-		rich_text_label.clear()
+		ability_name_label.text = ""
 		texture_rect.texture = null
 		return
 	
 	ClipAbility = new_clip_ability
 	preview_data.show()
 	
-	rich_text_label.text = new_clip_ability.name
+	ability_name_label.text = new_clip_ability.name
 	if new_clip_ability.texture != null:	
 		texture_rect.texture = new_clip_ability.texture
 
@@ -31,6 +31,9 @@ func _make_preview() -> Control:
 	return preview
 
 func _get_drag_data(at_position: Vector2) -> Variant:
+	if ClipAbility == null:
+		return null
+	
 	set_drag_preview(_make_preview())
 	
 	return self

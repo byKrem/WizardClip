@@ -40,10 +40,7 @@ texture = ExtResource("1_s663g")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer"]
+[node name="Label" type="Label" parent="VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 4
 text = "Some Text"
-fit_content = true
-autowrap_mode = 0
 horizontal_alignment = 1

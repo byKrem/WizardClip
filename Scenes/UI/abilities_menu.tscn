@@ -10,12 +10,14 @@
 [sub_resource type="Resource" id="Resource_wwa22"]
 script = ExtResource("3_7r1uo")
 value = 5
+texture = ExtResource("3_8f6cr")
 name = "Defence"
 weight = 1
 metadata/_custom_type_script = "uid://dx48enfgcnswf"
 
 [sub_resource type="Resource" id="Resource_ecsbu"]
 script = ExtResource("4_8f6cr")
+texture = ExtResource("3_8f6cr")
 name = "Skip"
 weight = -1
 metadata/_custom_type_script = "uid://dnysjqws160cu"
