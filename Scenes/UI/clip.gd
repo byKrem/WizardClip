@@ -6,21 +6,23 @@ signal selection_toggled(selection: bool)
 @onready var ability_inventory: AbilityInventory = $AbilityInventory
 @onready var label: Label = $Label
 
-
 # TODO: If in battle state lock drag'n'drop for ability dices
 # And make drag'n'drop for entire clip (Selected clip -> Selected Enemy)
 
 # TODO: Create resource strategy for abilities modifiers
 var clip_effect
+var can_drag = true
 var selected = false
 @export var group_name = "selected"
+
+var cooldown : int = 0
 
 func _ready() -> void:
 	gui_input.connect(_gui_input)
 
 func _gui_input(event):
 	if event is InputEventMouseButton:
-		if event.is_action_pressed("left_click"):
+		if event.is_action_pressed("left_click") && cooldown <= 0:
 			set_selected(!selected)
 			accept_event()
 

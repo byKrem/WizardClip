@@ -1,4 +1,5 @@
 class_name Enemy
 extends Node
 
-## TODO: Fill class
+@onready var defence_component: DefenceComponent = $DefenceComponent
+@onready var health_component: HealthComponent = $HealthComponent

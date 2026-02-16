@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="SkipAbility" load_steps=4 format=3 uid="uid://cs0qlck2xmy14"]
+
+[ext_resource type="Script" uid="uid://dnysjqws160cu" path="res://Scripts/ClipAbilities/SkipAbility.gd" id="1_grtou"]
+[ext_resource type="Texture2D" uid="uid://erk05egjq024" path="res://Assets/Images/BaseAbilitiesSprites.png" id="2_bs4bu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7sdy2"]
+atlas = ExtResource("2_bs4bu")
+region = Rect2(0, 0, 16, 16)
+
+[resource]
+script = ExtResource("1_grtou")
+texture = SubResource("AtlasTexture_7sdy2")
+name = "Skip"
+weight = -1
+metadata/_custom_type_script = "uid://dnysjqws160cu"

@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://c2dd1rl2jugl0"]
+[gd_scene load_steps=6 format=3 uid="uid://c2dd1rl2jugl0"]
 
 [ext_resource type="Script" uid="uid://b2k5luvuwc0p" path="res://Scripts/Player.gd" id="1_nqm6o"]
 [ext_resource type="Texture2D" uid="uid://kg25mk8ocp3g" path="res://Assets/Images/tmpChar2.png" id="2_qbyki"]
 [ext_resource type="PackedScene" uid="uid://udmb4o84e268" path="res://Scenes/Components/health_component.tscn" id="3_qbyki"]
+[ext_resource type="PackedScene" uid="uid://d1c647ei54b7c" path="res://Scenes/Components/defence_component.tscn" id="4_svftf"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_svftf"]
 animations = [{
@@ -22,6 +23,7 @@ script = ExtResource("1_nqm6o")
 scale = Vector2(10.5, 10.5)
 sprite_frames = SubResource("SpriteFrames_svftf")
 
-[node name="HealthComponent" parent="." instance=ExtResource("3_qbyki")]
+[node name="HealthComponent" parent="." node_paths=PackedStringArray("defence_component") instance=ExtResource("3_qbyki")]
+defence_component = NodePath("../DefenceComponent")
 
-[node name="AnimationContoler" type="Node" parent="."]
+[node name="DefenceComponent" parent="." instance=ExtResource("4_svftf")]

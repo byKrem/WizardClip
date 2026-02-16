@@ -5,6 +5,4 @@ extends BaseClipAbility
 
 # TODO: Make Player node
 func apply_effect(player : Player) -> void:
-	# Maybe Smth like this:
-	# player.health_component.shield += value
-	pass
+	player.defence_component.defence += value

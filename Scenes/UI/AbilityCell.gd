@@ -6,6 +6,8 @@ class_name AbilityDice
 @onready var ability_name_label: Label = $VBoxContainer/Label
 @onready var preview_data: Control = $VBoxContainer
 
+var can_grag = true
+
 func _ready() -> void:
 	update_resource(ClipAbility)
 
@@ -31,7 +33,7 @@ func _make_preview() -> Control:
 	return preview
 
 func _get_drag_data(at_position: Vector2) -> Variant:
-	if ClipAbility == null:
+	if ClipAbility == null || can_grag == false:
 		return null
 	
 	set_drag_preview(_make_preview())

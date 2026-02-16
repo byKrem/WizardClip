@@ -10,12 +10,16 @@ signal overheal(value : int)
 @export_category("Health Value")
 @export var max_health : int = 5
 
+@export_category("Connected Nodes")
+@export var defence_component: DefenceComponent
+
 var _current_health : int = 5
 
 func _ready() -> void:
 	_current_health = max_health
 
 func take_damage(damage : int):
+	damage = defence_component.apply_defence(damage)
 	_set_health_value(_current_health - damage)
 
 func heal_health(value : int):

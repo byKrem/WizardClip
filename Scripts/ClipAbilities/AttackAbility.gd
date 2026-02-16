@@ -5,6 +5,4 @@ extends BaseClipAbility
 
 # TODO: Make base Enemy node?
 func apply_on_enemy(enemy : Enemy) -> void:
-	# Maybe Smth like this:
-	# enemy.health_component.take_damage(value)
-	pass
+	enemy.health_component.take_damage(value)

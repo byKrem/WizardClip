@@ -24,11 +24,9 @@ columns = 1
 
 [node name="AbilityDice" parent="AbilityInventory/GridContainer" index="0" instance=ExtResource("1_mchha")]
 layout_mode = 2
-mouse_filter = 1
 
 [node name="AbilityDice2" parent="AbilityInventory/GridContainer" index="1" instance=ExtResource("1_mchha")]
 layout_mode = 2
-mouse_filter = 1
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0

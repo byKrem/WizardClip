@@ -7,10 +7,18 @@ signal selection_toggled(selection: bool)
 
 @export var group_name = "selected"
 
+var is_mouse_entered = false
 var selected: bool = false
 
+func _ready() -> void:
+	self.mouse_entered.connect(_mouse_state_chage)
+	self.mouse_exited.connect(_mouse_state_chage)
+
+func _mouse_state_chage() -> void:
+	is_mouse_entered = !is_mouse_entered
+
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("left_click"):
+	if event.is_action_pressed("left_click") && is_mouse_entered:
 		set_selected(!selected)
 
 func set_selected(value: bool):

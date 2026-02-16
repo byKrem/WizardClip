@@ -1,33 +1,12 @@
-[gd_scene load_steps=13 format=3 uid="uid://bm4bcvtbyq2i"]
+[gd_scene load_steps=8 format=3 uid="uid://bm4bcvtbyq2i"]
 
 [ext_resource type="PackedScene" uid="uid://c2dd1rl2jugl0" path="res://Scenes/Entities/player.tscn" id="1_7lyyc"]
 [ext_resource type="Script" uid="uid://cshbgbikaosbr" path="res://Scenes/GameScreens/battle_screen.gd" id="1_tojfu"]
-[ext_resource type="Texture2D" uid="uid://ddacfb2hfnwmw" path="res://Assets/Images/tmpChar1.png" id="2_k86ov"]
-[ext_resource type="Script" uid="uid://fbae0ss7bgvp" path="res://Scripts/Enemy.gd" id="4_o50yb"]
 [ext_resource type="PackedScene" uid="uid://ddbce83um8qp7" path="res://Scenes/UI/clip.tscn" id="5_anwhw"]
-[ext_resource type="PackedScene" uid="uid://k0160xghyww" path="res://Scenes/Components/selection_area_2d.tscn" id="5_np2wn"]
-[ext_resource type="Script" uid="uid://b73did8tphcyv" path="res://Scripts/ClipAbilities/AttackAbility.gd" id="6_yhq5b"]
-[ext_resource type="Texture2D" uid="uid://c6mlblookc0qg" path="res://icon.svg" id="7_np2wn"]
-[ext_resource type="Script" uid="uid://dx48enfgcnswf" path="res://Scripts/ClipAbilities/DefenceAbility.gd" id="8_rw3hn"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rw3hn"]
-size = Vector2(12.4545, 22.8182)
-
-[sub_resource type="Resource" id="Resource_2uubq"]
-script = ExtResource("6_yhq5b")
-value = 2
-texture = ExtResource("7_np2wn")
-name = "Attack"
-weight = 2
-metadata/_custom_type_script = "uid://b73did8tphcyv"
-
-[sub_resource type="Resource" id="Resource_ncpqh"]
-script = ExtResource("8_rw3hn")
-value = 5
-texture = ExtResource("7_np2wn")
-name = "Defence"
-weight = 1
-metadata/_custom_type_script = "uid://dx48enfgcnswf"
+[ext_resource type="PackedScene" uid="uid://cq3k6rkdaodm3" path="res://Scenes/Entities/enemy.tscn" id="6_o50yb"]
+[ext_resource type="PackedScene" uid="uid://1v5rk50a5o1h" path="res://Scenes/UI/abilities_menu.tscn" id="7_anwhw"]
+[ext_resource type="Resource" uid="uid://koncln70cwe4" path="res://Resources/Abilities/DefaultDefeceAbility.tres" id="8_yhq5b"]
+[ext_resource type="Resource" uid="uid://burwgxqlod08o" path="res://Resources/Abilities/DefaulAttackAbility.tres" id="10_rw3hn"]
 
 [node name="BattleScreen" type="Node2D"]
 script = ExtResource("1_tojfu")
@@ -36,33 +15,12 @@ script = ExtResource("1_tojfu")
 unique_name_in_owner = true
 position = Vector2(240, 162)
 
-[node name="Enemy" type="Sprite2D" parent="."]
-position = Vector2(785, 176)
-scale = Vector2(11, 11)
-texture = ExtResource("2_k86ov")
-script = ExtResource("4_o50yb")
+[node name="Enemy" parent="." instance=ExtResource("6_o50yb")]
+position = Vector2(779, 200)
 
-[node name="SelectionArea2D" parent="Enemy" instance=ExtResource("5_np2wn")]
-group_name = "selected_enemy"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy/SelectionArea2D"]
-position = Vector2(0.136368, 4.13636)
-scale = Vector2(1, 1)
-shape = SubResource("RectangleShape2D_rw3hn")
-
-[node name="Enemy2" type="Sprite2D" parent="."]
-position = Vector2(1015, 234)
-scale = Vector2(7.5625, 7.5625)
-texture = ExtResource("2_k86ov")
-script = ExtResource("4_o50yb")
-
-[node name="SelectionArea2D" parent="Enemy2" instance=ExtResource("5_np2wn")]
-group_name = "selected_enemy"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy2/SelectionArea2D"]
-position = Vector2(0.136368, 4.13636)
-scale = Vector2(1, 1)
-shape = SubResource("RectangleShape2D_rw3hn")
+[node name="Enemy2" parent="." instance=ExtResource("6_o50yb")]
+position = Vector2(1015, 237)
+scale = Vector2(0.8, 0.8)
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -72,20 +30,18 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -61.0
-offset_top = -223.0
-offset_right = -61.0
-offset_bottom = -223.0
+offset_left = 63.0
+offset_top = -224.0
+offset_right = 63.0
+offset_bottom = -224.0
 grow_vertical = 0
 group_name = "selected_clip"
 
 [node name="AbilityDice" parent="UI/Clip/AbilityInventory/GridContainer" index="0"]
-mouse_filter = 2
-ClipAbility = SubResource("Resource_2uubq")
+ClipAbility = ExtResource("8_yhq5b")
 
 [node name="AbilityDice2" parent="UI/Clip/AbilityInventory/GridContainer" index="1"]
-mouse_filter = 2
-ClipAbility = SubResource("Resource_ncpqh")
+ClipAbility = ExtResource("10_rw3hn")
 
 [node name="Clip2" parent="UI" instance=ExtResource("5_anwhw")]
 anchors_preset = 7
@@ -93,20 +49,18 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -191.0
-offset_top = -223.0
-offset_right = -191.0
-offset_bottom = -223.0
+offset_left = -102.0
+offset_top = -220.0
+offset_right = -102.0
+offset_bottom = -220.0
 grow_vertical = 0
 group_name = "selected_clip"
 
 [node name="AbilityDice" parent="UI/Clip2/AbilityInventory/GridContainer" index="0"]
-mouse_filter = 2
-ClipAbility = SubResource("Resource_2uubq")
+ClipAbility = ExtResource("10_rw3hn")
 
 [node name="AbilityDice2" parent="UI/Clip2/AbilityInventory/GridContainer" index="1"]
-mouse_filter = 2
-ClipAbility = SubResource("Resource_ncpqh")
+ClipAbility = ExtResource("8_yhq5b")
 
 [node name="Button" type="Button" parent="UI"]
 offset_left = 935.0
@@ -136,8 +90,13 @@ offset_right = 1036.0
 offset_bottom = 385.0
 text = "Hp: 5"
 
+[node name="AbilitiesMenu" parent="UI" instance=ExtResource("7_anwhw")]
+offset_top = 388.0
+offset_right = -781.0
+
 [connection signal="pressed" from="UI/Button" to="." method="_on_button_pressed"]
 
+[editable path="Enemy"]
 [editable path="UI/Clip"]
 [editable path="UI/Clip/AbilityInventory"]
 [editable path="UI/Clip2"]

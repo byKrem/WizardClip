@@ -1,0 +1,30 @@
+[gd_scene load_steps=7 format=3 uid="uid://cq3k6rkdaodm3"]
+
+[ext_resource type="Script" uid="uid://fbae0ss7bgvp" path="res://Scripts/Enemy.gd" id="1_tx8ge"]
+[ext_resource type="Texture2D" uid="uid://hfdyalwrd4fo" path="res://Assets/Images/tmpChar3.png" id="2_4ar56"]
+[ext_resource type="PackedScene" uid="uid://udmb4o84e268" path="res://Scenes/Components/health_component.tscn" id="2_tx8ge"]
+[ext_resource type="PackedScene" uid="uid://d1c647ei54b7c" path="res://Scenes/Components/defence_component.tscn" id="3_4ar56"]
+[ext_resource type="PackedScene" uid="uid://k0160xghyww" path="res://Scenes/Components/selection_area_2d.tscn" id="4_hroqg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ny53q"]
+size = Vector2(123, 220)
+
+[node name="Enemy" type="Node2D"]
+script = ExtResource("1_tx8ge")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 37)
+texture = ExtResource("2_4ar56")
+flip_h = true
+
+[node name="SelectionArea2D" parent="." instance=ExtResource("4_hroqg")]
+group_name = "selected_enemy"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SelectionArea2D"]
+position = Vector2(-0.5, 40)
+shape = SubResource("RectangleShape2D_ny53q")
+
+[node name="HealthComponent" parent="." node_paths=PackedStringArray("defence_component") instance=ExtResource("2_tx8ge")]
+defence_component = NodePath("../DefenceComponent")
+
+[node name="DefenceComponent" parent="." instance=ExtResource("3_4ar56")]
