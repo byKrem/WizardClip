@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cbtk0pukmy0pc"]
+
+[ext_resource type="Script" uid="uid://b7cn3d5qpr4a8" path="res://Scenes/UI/map.gd" id="1_k3vwj"]
+
+[node name="Map" type="ScrollContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_k3vwj")
