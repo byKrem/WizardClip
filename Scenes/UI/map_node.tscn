@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://m22x7mnewat1"]
+
+[ext_resource type="Script" uid="uid://dp4j108hqln1c" path="res://Scenes/UI/map_node.gd" id="1_oy1af"]
+
+[node name="MapNode" type="TextureButton"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_oy1af")
