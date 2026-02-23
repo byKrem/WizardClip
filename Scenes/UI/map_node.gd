@@ -2,7 +2,6 @@ class_name MapNode
 extends TextureButton
 
 
-# Maybe use Dictionary{Type, Array[MapEvent]}
 enum Type {
 	NOT_ASSIGNED = 0, # Empty node
 	SHOP,
@@ -26,6 +25,7 @@ var row : int = 0
 var column : int = 0
 var next_nodes : Array[MapNode]
 var event : BaseMapEvent
+var node_in_player_reach : bool = false
 
 func _ready() -> void:
 	event_icon.texture = TYPE_ICONS[type]
@@ -34,11 +34,19 @@ func _ready() -> void:
 	
 	self.pressed.connect(_on_pressed)
 
+func set_can_reach(value : bool) -> void:
+	node_in_player_reach = value
+	self.disabled = !value
+
 func _on_pressed() -> void:
 	if event == null || !event.is_valid():
 		printerr("Event is null")
 		return
 	
+	if !node_in_player_reach:
+		return
+	
+	EventBus.map_node_pressed.emit(self)
 	event.execute()
 
 func _draw() -> void:

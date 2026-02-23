@@ -11,8 +11,13 @@ config_version=5
 [application]
 
 config/name="WizardClip"
+run/main_scene="uid://bobju1o5hehl2"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[autoload]
+
+EventBus="*res://Scenes/event_bus.tscn"
 
 [input]
 
