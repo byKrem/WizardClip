@@ -2,13 +2,13 @@ class_name MapGenerator
 extends Node
 
 var x_margin : int = 30
-var y_margin : int = 25
-var map_width: int = 5
+var y_margin : int = 50
+var map_width: int = 7
 var map_height:int = 10
-var pos_offset:int = 5
-var path_count:int = 3
+var pos_offset:int = 10
+var path_count:int = 5
 var map : Array[Array]
-
+const MAP_NODE = preload("res://Scenes/UI/map_node.tscn")
 # floor 0: [1, 0, 1, 1, 0]
 # floor 1: [3, 0, 0, 3, 0]
 # floor 2: [1, 0, 1, 3, 0]
@@ -19,7 +19,6 @@ var map : Array[Array]
 # floor 7: [0, 1, 1, 2, 0]
 # floor 8: [3, 0, 2, 0, 0]
 # floor 9: [0, 0, 4, 0, 0]
-
 
 func generate_new_map() -> Array[Array]:
 	map = _generate_grid()
@@ -106,6 +105,12 @@ func _set_boss_room() -> void:
 	var boss_node : MapNode = map[map_height-1][floori(map_width*0.5)]
 	
 	boss_node.type = MapNode.Type.BOSS
+	
+	for map_node : MapNode in map[map_height-2]:
+		if map_node.next_nodes.size() == 0:
+			continue
+		map_node.next_nodes.clear()
+		map_node.next_nodes.append(boss_node)
 
 func _generate_grid() -> Array[Array]:
 	var result : Array[Array] = []
@@ -113,11 +118,11 @@ func _generate_grid() -> Array[Array]:
 	for i in map_height:
 		var inner_floor : Array[MapNode] = []
 		for j in map_width:
-			var new_map_node : MapNode = MapNode.new()
+			var new_map_node : MapNode = MAP_NODE.instantiate()
 			new_map_node.row = i
 			new_map_node.column = j
 			new_map_node.next_nodes = []
-			new_map_node.position = Vector2(i,j) + Vector2(randf(),randf()) * pos_offset
+			new_map_node.position = Vector2(j*(50+x_margin),i*(50+y_margin)) + Vector2(randf(),randf()) * pos_offset
 			inner_floor.append(new_map_node)
 		
 		result.append(inner_floor)
