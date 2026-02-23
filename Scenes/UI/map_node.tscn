@@ -1,8 +1,23 @@
-[gd_scene load_steps=2 format=3 uid="uid://m22x7mnewat1"]
+[gd_scene load_steps=4 format=3 uid="uid://m22x7mnewat1"]
 
 [ext_resource type="Script" uid="uid://dp4j108hqln1c" path="res://Scenes/UI/map_node.gd" id="1_oy1af"]
+[ext_resource type="Texture2D" uid="uid://c5ansjcv3jekl" path="res://Assets/Images/MapIconBackground.png" id="1_urngf"]
+[ext_resource type="Texture2D" uid="uid://bcm6b2u25slxr" path="res://Assets/Images/EnemyEventIcon.png" id="3_shl3p"]
 
 [node name="MapNode" type="TextureButton"]
+custom_minimum_size = Vector2(50, 50)
 offset_right = 40.0
 offset_bottom = 40.0
+texture_normal = ExtResource("1_urngf")
+ignore_texture_size = true
+stretch_mode = 5
 script = ExtResource("1_oy1af")
+
+[node name="EventIcon" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_shl3p")

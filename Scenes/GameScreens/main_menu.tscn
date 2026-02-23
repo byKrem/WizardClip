@@ -1,0 +1,54 @@
+[gd_scene load_steps=5 format=3 uid="uid://bobju1o5hehl2"]
+
+[ext_resource type="Texture2D" uid="uid://c6mlblookc0qg" path="res://icon.svg" id="1_wkyho"]
+[ext_resource type="PackedScene" uid="uid://omk78hqvqqmq" path="res://Scenes/UI/scene_transition_button.tscn" id="2_wkyho"]
+[ext_resource type="Script" uid="uid://c40lwo5u70lrf" path="res://Scripts/UIButtons/quit_button.gd" id="3_b6ln6"]
+[ext_resource type="Theme" uid="uid://bx17hoo0132qg" path="res://Resources/Themes/Buttons/button_theme.tres" id="3_bxvpx"]
+
+[node name="MainMenu" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Title" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="GameIcon" type="TextureRect" parent="VBoxContainer/Title"]
+layout_mode = 2
+texture = ExtResource("1_wkyho")
+
+[node name="GameName" type="Label" parent="VBoxContainer/Title"]
+layout_mode = 2
+text = "WizardClip"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="StrButton" parent="VBoxContainer" instance=ExtResource("2_wkyho")]
+layout_mode = 2
+scene_file = "uid://cfucu08stgfxy"
+
+[node name="SettingsButton" parent="VBoxContainer" instance=ExtResource("2_wkyho")]
+layout_mode = 2
+text = "SETTINGS"
+
+[node name="QuitButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = ExtResource("3_bxvpx")
+text = "QUIT"
+script = ExtResource("3_b6ln6")

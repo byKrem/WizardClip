@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://daswq44hpdu3c"]
+
+[ext_resource type="Script" uid="uid://081xjj6gyhxl" path="res://Scripts/UIButtons/scene_transition_button.gd" id="1_4g2co"]
+[ext_resource type="Theme" uid="uid://bx17hoo0132qg" path="res://Resources/Themes/Buttons/button_theme.tres" id="1_ms7q8"]
+
+[node name="SettingsMenu" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="MasterSlider" type="HSlider" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="MusicSlider" type="HSlider" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="SfxSlider" type="HSlider" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="SceneTransitionButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme = ExtResource("1_ms7q8")
+text = "Back"
+script = ExtResource("1_4g2co")
+scene_file = "uid://bobju1o5hehl2"
+metadata/_custom_type_script = "uid://081xjj6gyhxl"

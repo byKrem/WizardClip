@@ -1,34 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://1v5rk50a5o1h"]
+[gd_scene load_steps=6 format=3 uid="uid://1v5rk50a5o1h"]
 
 [ext_resource type="PackedScene" uid="uid://cr0njc1ragx4x" path="res://Scenes/UI/ability_inventory.tscn" id="1_8f6cr"]
 [ext_resource type="PackedScene" uid="uid://wbcmkviyhf7t" path="res://Scenes/UI/ability_dice.tscn" id="1_lb5qx"]
-[ext_resource type="Script" uid="uid://b73did8tphcyv" path="res://Scripts/ClipAbilities/AttackAbility.gd" id="2_tgjrc"]
-[ext_resource type="Script" uid="uid://dx48enfgcnswf" path="res://Scripts/ClipAbilities/DefenceAbility.gd" id="3_7r1uo"]
-[ext_resource type="Texture2D" uid="uid://c6mlblookc0qg" path="res://icon.svg" id="3_8f6cr"]
-[ext_resource type="Script" uid="uid://dnysjqws160cu" path="res://Scripts/ClipAbilities/SkipAbility.gd" id="4_8f6cr"]
-
-[sub_resource type="Resource" id="Resource_wwa22"]
-script = ExtResource("3_7r1uo")
-value = 5
-texture = ExtResource("3_8f6cr")
-name = "Defence"
-weight = 1
-metadata/_custom_type_script = "uid://dx48enfgcnswf"
-
-[sub_resource type="Resource" id="Resource_ecsbu"]
-script = ExtResource("4_8f6cr")
-texture = ExtResource("3_8f6cr")
-name = "Skip"
-weight = -1
-metadata/_custom_type_script = "uid://dnysjqws160cu"
-
-[sub_resource type="Resource" id="Resource_x1dij"]
-script = ExtResource("2_tgjrc")
-value = 2
-texture = ExtResource("3_8f6cr")
-name = "Attack"
-weight = 2
-metadata/_custom_type_script = "uid://b73did8tphcyv"
+[ext_resource type="Resource" uid="uid://burwgxqlod08o" path="res://Resources/Abilities/DefaulAttackAbility.tres" id="3_7r1uo"]
+[ext_resource type="Resource" uid="uid://koncln70cwe4" path="res://Resources/Abilities/DefaultDefeceAbility.tres" id="4_8f6cr"]
+[ext_resource type="Resource" uid="uid://cs0qlck2xmy14" path="res://Resources/Abilities/SkipAbility.tres" id="5_wwa22"]
 
 [node name="AbilitiesMenu" type="MarginContainer"]
 anchors_preset = 15
@@ -67,20 +43,20 @@ layout_mode = 2
 
 [node name="AbilityDice2" parent="VBoxContainer/AbilityInventory/GridContainer" index="1" instance=ExtResource("1_lb5qx")]
 layout_mode = 2
-ClipAbility = SubResource("Resource_wwa22")
+ClipAbility = ExtResource("3_7r1uo")
 
 [node name="AbilityDice3" parent="VBoxContainer/AbilityInventory/GridContainer" index="2" instance=ExtResource("1_lb5qx")]
 layout_mode = 2
-ClipAbility = SubResource("Resource_ecsbu")
+ClipAbility = ExtResource("4_8f6cr")
 
 [node name="AbilityDice4" parent="VBoxContainer/AbilityInventory/GridContainer" index="3" instance=ExtResource("1_lb5qx")]
 layout_mode = 2
+ClipAbility = ExtResource("5_wwa22")
 
 [node name="AbilityDice5" parent="VBoxContainer/AbilityInventory/GridContainer" index="4" instance=ExtResource("1_lb5qx")]
 layout_mode = 2
 
 [node name="AbilityDice6" parent="VBoxContainer/AbilityInventory/GridContainer" index="5" instance=ExtResource("1_lb5qx")]
 layout_mode = 2
-ClipAbility = SubResource("Resource_x1dij")
 
 [editable path="VBoxContainer/AbilityInventory"]

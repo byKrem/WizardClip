@@ -1,0 +1,127 @@
+[gd_scene load_steps=7 format=3 uid="uid://cfucu08stgfxy"]
+
+[ext_resource type="Texture2D" uid="uid://ddacfb2hfnwmw" path="res://Assets/Images/tmpChar1.png" id="1_0pbki"]
+[ext_resource type="PackedScene" uid="uid://omk78hqvqqmq" path="res://Scenes/UI/scene_transition_button.tscn" id="1_7k1qo"]
+[ext_resource type="Texture2D" uid="uid://cu3q3ptx4mhay" path="res://Assets/Images/lock.png" id="2_gxpdm"]
+[ext_resource type="Texture2D" uid="uid://kg25mk8ocp3g" path="res://Assets/Images/tmpChar2.png" id="2_w4sd7"]
+[ext_resource type="Texture2D" uid="uid://hfdyalwrd4fo" path="res://Assets/Images/tmpChar3.png" id="3_gxpdm"]
+[ext_resource type="Texture2D" uid="uid://b1ksns2axjbq3" path="res://Assets/Images/tmpChar4.png" id="4_sjwy7"]
+
+[node name="CharSelectionMenu" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 5
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/MarginContainer"]
+layout_mode = 2
+vertical_scroll_mode = 0
+
+[node name="CharSelection" type="HBoxContainer" parent="VBoxContainer/MarginContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 15
+
+[node name="Char1" type="TextureRect" parent="VBoxContainer/MarginContainer/ScrollContainer/CharSelection"]
+layout_mode = 2
+texture = ExtResource("1_0pbki")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="Panel" type="Panel" parent="VBoxContainer/MarginContainer/ScrollContainer/CharSelection/Char1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Locked" type="TextureRect" parent="VBoxContainer/MarginContainer/ScrollContainer/CharSelection/Char1/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_gxpdm")
+stretch_mode = 5
+
+[node name="Char2" type="TextureRect" parent="VBoxContainer/MarginContainer/ScrollContainer/CharSelection"]
+layout_mode = 2
+texture = ExtResource("2_w4sd7")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="Char3" type="TextureRect" parent="VBoxContainer/MarginContainer/ScrollContainer/CharSelection"]
+layout_mode = 2
+texture = ExtResource("3_gxpdm")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="Panel" type="Panel" parent="VBoxContainer/MarginContainer/ScrollContainer/CharSelection/Char3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Locked" type="TextureRect" parent="VBoxContainer/MarginContainer/ScrollContainer/CharSelection/Char3/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_gxpdm")
+stretch_mode = 1
+
+[node name="Char4" type="TextureRect" parent="VBoxContainer/MarginContainer/ScrollContainer/CharSelection"]
+layout_mode = 2
+texture = ExtResource("4_sjwy7")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="Panel" type="Panel" parent="VBoxContainer/MarginContainer/ScrollContainer/CharSelection/Char4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Locked" type="TextureRect" parent="VBoxContainer/MarginContainer/ScrollContainer/CharSelection/Char4/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_gxpdm")
+stretch_mode = 5
+
+[node name="GameStart" type="HBoxContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+alignment = 1
+
+[node name="SceneTransitionButton" parent="VBoxContainer/GameStart" instance=ExtResource("1_7k1qo")]
+layout_mode = 2
+size_flags_vertical = 4
+scene_file = "uid://cnoalsp6n4cr3"

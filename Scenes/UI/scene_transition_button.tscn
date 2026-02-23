@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://omk78hqvqqmq"]
+
+[ext_resource type="Script" uid="uid://081xjj6gyhxl" path="res://Scripts/UIButtons/scene_transition_button.gd" id="1_73m8i"]
+[ext_resource type="Theme" uid="uid://bx17hoo0132qg" path="res://Resources/Themes/Buttons/button_theme.tres" id="1_l20bu"]
+
+[node name="SceneTransitionButton" type="Button"]
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = ExtResource("1_l20bu")
+text = "START GAME"
+script = ExtResource("1_73m8i")
