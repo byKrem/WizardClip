@@ -31,6 +31,8 @@ func _ready() -> void:
 	event_icon.texture = TYPE_ICONS[type]
 	if type == Type.NOT_ASSIGNED:
 		self.texture_normal = null
+		self.disabled = true
+		self.process_mode = Node.PROCESS_MODE_DISABLED
 	
 	self.pressed.connect(_on_pressed)
 
