@@ -8,6 +8,9 @@ var map_height:int = 10
 var pos_offset:int = 10
 var path_count:int = 5
 var map : Array[Array]
+const FIGHT_ROOM_WEIGHT : float = 12.0
+const EVENT_ROOM_WEIGHT : float = 5.0
+const SHOP_ROOM_WEIGHT : float = 2.5
 const MAP_NODE = preload("res://Scenes/UI/map_node.tscn")
 # floor 0: [1, 0, 1, 1, 0]
 # floor 1: [3, 0, 0, 3, 0]
@@ -20,6 +23,13 @@ const MAP_NODE = preload("res://Scenes/UI/map_node.tscn")
 # floor 8: [3, 0, 2, 0, 0]
 # floor 9: [0, 0, 4, 0, 0]
 
+var random_room_type_weights = {
+	MapNode.Type.FIGHT: 0.0,
+	MapNode.Type.SHOP: 0.0,
+	MapNode.Type.EVENT: 0.0
+}
+var random_room_type_total_weight : float = 0
+
 func generate_new_map() -> Array[Array]:
 	map = _generate_grid()
 	
@@ -31,6 +41,7 @@ func generate_new_map() -> Array[Array]:
 			current_column_id = _create_connection(row_id, current_column_id)
 	
 	_set_boss_room()
+	_setup_random_room_weights()
 	_randomize_room_types()
 	
 	for i in range(map_height):
@@ -91,6 +102,9 @@ func _can_connect_nodes(row_id : int, column_id : int, next_node : MapNode) -> b
 	return true
 
 func _randomize_room_types() -> void:
+	for node in map[0]:
+		if node.next_nodes.size() > 0:
+			node.type = MapNode.Type.FIGHT
 	
 	for node in map[4]:
 		if node.next_nodes.size() > 0:
@@ -99,7 +113,55 @@ func _randomize_room_types() -> void:
 	for row in map:
 		for node : MapNode in row:
 			if node.next_nodes.size() > 0 and node.type == MapNode.Type.NOT_ASSIGNED:
-				node.type = randi_range(1,3)
+				_set_room_randomly(node)
+
+func _set_room_randomly(map_node : MapNode) -> void:
+	var consecutive_shop : bool = true
+	var intended_type
+	while consecutive_shop:
+		intended_type = _get_random_room_type_by_weight()
+		
+		var is_shop = intended_type == MapNode.Type.SHOP
+		var is_parent_shop = _has_parent_of_type(map_node, MapNode.Type.SHOP)
+		
+		consecutive_shop = is_parent_shop and is_shop
+	
+	map_node.type = intended_type
+
+func _has_parent_of_type(map_node : MapNode, target_type : MapNode.Type) -> bool:
+	var parents : Array[MapNode]
+	
+	print("map row: %s \n map column %s" % [map_node.row, map_node.column])
+	
+	if map_node.column > 0 and map_node.row > 0:
+		var parent : MapNode = map[map_node.row-1][map_node.column-1]
+		if parent.next_nodes.has(map_node):
+			parents.append(parent)
+	
+	if map_node.row > 0:
+		var parent : MapNode = map[map_node.row][map_node.column-1]
+		if parent.next_nodes.has(map_node):
+			parents.append(parent)
+	
+	if map_node.column < map_width-1 and map_node.row > 0:
+		var parent : MapNode = map[map_node.row+1][map_node.column-1]
+		if parent.next_nodes.has(map_node):
+			parents.append(parent)
+	
+	for parent in parents:
+		if parent.type == target_type:
+			return true
+	
+	return false
+
+func _get_random_room_type_by_weight() -> MapNode.Type:
+	var roll := randf_range(0.0, random_room_type_total_weight)
+	
+	for type: MapNode.Type in random_room_type_weights:
+		if random_room_type_weights[type] > roll:
+			return type
+	
+	return MapNode.Type.FIGHT
 
 func _set_boss_room() -> void:
 	var boss_node : MapNode = map[map_height-1][floori(map_width*0.5)]
@@ -111,6 +173,13 @@ func _set_boss_room() -> void:
 			continue
 		map_node.next_nodes.clear()
 		map_node.next_nodes.append(boss_node)
+
+func _setup_random_room_weights() -> void:
+	random_room_type_weights[MapNode.Type.FIGHT] = FIGHT_ROOM_WEIGHT
+	random_room_type_weights[MapNode.Type.SHOP] = FIGHT_ROOM_WEIGHT + SHOP_ROOM_WEIGHT
+	random_room_type_weights[MapNode.Type.EVENT] = random_room_type_weights[MapNode.Type.SHOP] + EVENT_ROOM_WEIGHT
+	
+	random_room_type_total_weight = random_room_type_weights[MapNode.Type.EVENT]
 
 func _generate_grid() -> Array[Array]:
 	var result : Array[Array] = []
