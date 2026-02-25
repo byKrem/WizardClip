@@ -26,7 +26,8 @@ func _on_node_pressed(node : MapNode) -> void:
 	if node == null or node == current_pos_on_map:
 		return
 	
-	current_pos_on_map.set_can_reach(false)
+	if current_pos_on_map != null:
+		current_pos_on_map.set_can_reach(false)
 	current_pos_on_map = node
 	
 	for next_node : MapNode in node.next_nodes:

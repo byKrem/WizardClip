@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://bcdrk8ld73uer"]
+
+[ext_resource type="PackedScene" uid="uid://cq3k6rkdaodm3" path="res://Scenes/Entities/enemy.tscn" id="1_2xrfo"]
+
+[node name="battle2dudes" type="Node2D"]
+
+[node name="Enemy" parent="." instance=ExtResource("1_2xrfo")]
+position = Vector2(829, 172)
+
+[node name="Enemy2" parent="." instance=ExtResource("1_2xrfo")]
+position = Vector2(969, 194)
+scale = Vector2(0.815, 0.815)

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="BattleStats" load_steps=3 format=3 uid="uid://b2jwixx8ht5cg"]
+
+[ext_resource type="Script" uid="uid://kmlv52ex4wiq" path="res://Scripts/battle_stats.gd" id="1_e63ot"]
+[ext_resource type="PackedScene" uid="uid://bcdrk8ld73uer" path="res://Resources/Events/Enemies/battle_2_dudes.tscn" id="1_i5u2x"]
+
+[resource]
+script = ExtResource("1_e63ot")
+battle_tier = 0
+weight = 3.0
+enemies = ExtResource("1_i5u2x")
+metadata/_custom_type_script = "uid://kmlv52ex4wiq"

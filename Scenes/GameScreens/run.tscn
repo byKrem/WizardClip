@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://mivffo7j0cx8"]
+
+[ext_resource type="PackedScene" uid="uid://cahnuaofgrtme" path="res://Scenes/UI/map.tscn" id="1_q6w2r"]
+[ext_resource type="Script" uid="uid://uhol7xr1lsca" path="res://Scenes/GameScreens/run.gd" id="1_ssll3"]
+
+[node name="Run" type="Node"]
+script = ExtResource("1_ssll3")
+
+[node name="Map" parent="." instance=ExtResource("1_q6w2r")]
+metadata/_edit_use_anchors_ = true

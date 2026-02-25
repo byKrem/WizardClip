@@ -18,6 +18,8 @@ const TYPE_ICONS = {
 	MapNode.Type.BOSS : preload("res://Assets/Images/BossEventIcon.png"),
 }
 
+@export var battle_stats : BattleStats
+
 @onready var event_icon: TextureRect = $EventIcon
 
 var type : Type = Type.NOT_ASSIGNED
@@ -32,7 +34,6 @@ func _ready() -> void:
 	if type == Type.NOT_ASSIGNED:
 		self.texture_normal = null
 		self.disabled = true
-		self.process_mode = Node.PROCESS_MODE_DISABLED
 	
 	self.pressed.connect(_on_pressed)
 
@@ -41,15 +42,17 @@ func set_can_reach(value : bool) -> void:
 	self.disabled = !value
 
 func _on_pressed() -> void:
-	if event == null || !event.is_valid():
-		printerr("Event is null")
+	if self.disabled:
 		return
+	
+	#if event == null || !event.is_valid():
+		#printerr("Event is null")
+		#return
 	
 	if !node_in_player_reach:
 		return
 	
 	EventBus.map_node_pressed.emit(self)
-	event.execute()
 
 func _draw() -> void:
 	for next_node in next_nodes:

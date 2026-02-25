@@ -7,11 +7,12 @@ var map_width: int = 7
 var map_height:int = 10
 var pos_offset:int = 10
 var path_count:int = 5
-var map : Array[Array]
 const FIGHT_ROOM_WEIGHT : float = 12.0
-const EVENT_ROOM_WEIGHT : float = 5.0
+const EVENT_ROOM_WEIGHT : float = 8.0
 const SHOP_ROOM_WEIGHT : float = 2.5
 const MAP_NODE = preload("res://Scenes/UI/map_node.tscn")
+const ENEMY_POOL = preload("res://Scripts/Events/enemy_pool.tres")
+var map : Array[Array]
 # floor 0: [1, 0, 1, 1, 0]
 # floor 1: [3, 0, 0, 3, 0]
 # floor 2: [1, 0, 1, 3, 0]
@@ -105,6 +106,7 @@ func _randomize_room_types() -> void:
 	for node in map[0]:
 		if node.next_nodes.size() > 0:
 			node.type = MapNode.Type.FIGHT
+			node.battle_stats = ENEMY_POOL.enemy_events.pick_random()
 	
 	for node in map[4]:
 		if node.next_nodes.size() > 0:
@@ -127,11 +129,14 @@ func _set_room_randomly(map_node : MapNode) -> void:
 		consecutive_shop = is_parent_shop and is_shop
 	
 	map_node.type = intended_type
+	
+	if map_node.type == MapNode.Type.FIGHT:
+		# TODO: Make a battle pool class with all battle resourses in it
+		# and just pick random resource depending on weight
+		map_node.battle_stats = ENEMY_POOL.enemy_events.pick_random()
 
 func _has_parent_of_type(map_node : MapNode, target_type : MapNode.Type) -> bool:
 	var parents : Array[MapNode]
-	
-	print("map row: %s \n map column %s" % [map_node.row, map_node.column])
 	
 	if map_node.column > 0 and map_node.row > 0:
 		var parent : MapNode = map[map_node.row-1][map_node.column-1]
@@ -139,12 +144,12 @@ func _has_parent_of_type(map_node : MapNode, target_type : MapNode.Type) -> bool
 			parents.append(parent)
 	
 	if map_node.row > 0:
-		var parent : MapNode = map[map_node.row][map_node.column-1]
+		var parent : MapNode = map[map_node.row-1][map_node.column]
 		if parent.next_nodes.has(map_node):
 			parents.append(parent)
 	
 	if map_node.column < map_width-1 and map_node.row > 0:
-		var parent : MapNode = map[map_node.row+1][map_node.column-1]
+		var parent : MapNode = map[map_node.row-1][map_node.column+1]
 		if parent.next_nodes.has(map_node):
 			parents.append(parent)
 	
