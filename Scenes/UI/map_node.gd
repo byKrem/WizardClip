@@ -59,8 +59,9 @@ func _draw() -> void:
 		var line = self.position.distance_to(next_node.position)
 		line = line * self.position.direction_to(next_node.position)
 		line += next_node.size/2
+		var line_pos_offset = self.position.direction_to(next_node.position) * self.size/2
 		var color = Color.GRAY
-		draw_dashed_line(self.size/2, line, color, 2, 5, true)
+		draw_dashed_line(self.size/2 + line_pos_offset, line - line_pos_offset, color, 2, 5, true)
 
 func _to_string() -> String:
 	return str(type)[0]
