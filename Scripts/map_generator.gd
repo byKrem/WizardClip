@@ -13,16 +13,18 @@ const SHOP_ROOM_WEIGHT : float = 2.5
 const MAP_NODE = preload("res://Scenes/UI/map_node.tscn")
 const ENEMY_POOL = preload("res://Scripts/Events/enemy_pool.tres")
 var map : Array[Array]
-# floor 0: [1, 0, 1, 1, 0]
-# floor 1: [3, 0, 0, 3, 0]
-# floor 2: [1, 0, 1, 3, 0]
-# floor 3: [0, 1, 0, 1, 0]
-# floor 4: [1, 0, 0, 1, 0]
-# floor 5: [3, 3, 0, 1, 0]
-# floor 6: [1, 3, 0, 0, 3]
-# floor 7: [0, 1, 1, 2, 0]
-# floor 8: [3, 0, 2, 0, 0]
-# floor 9: [0, 0, 4, 0, 0]
+
+# floor 0: [2, 0, 0, 2, 0, 2, 0]
+# floor 1: [0, 3, 0, 1, 0, 1, 3]
+# floor 2: [0, 2, 2, 0, 2, 0, 2]
+# floor 3: [0, 2, 2, 0, 2, 3, 0]
+# floor 4: [0, 1, 0, 1, 0, 1, 0]
+# floor 5: [2, 0, 0, 3, 3, 2, 0]
+# floor 6: [1, 0, 3, 3, 0, 0, 1]
+# floor 7: [2, 2, 1, 2, 0, 0, 2]
+# floor 8: [0, 2, 2, 0, 0, 3, 0]
+# floor 9: [0, 0, 0, 4, 0, 0, 0]
+
 
 var random_room_type_weights = {
 	MapNode.Type.FIGHT: 0.0,
@@ -44,9 +46,6 @@ func generate_new_map() -> Array[Array]:
 	_set_boss_room()
 	_setup_random_room_weights()
 	_randomize_room_types()
-	
-	for i in range(map_height):
-		print("floor ",i,": ",map[i])
 	
 	return map
 
