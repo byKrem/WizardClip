@@ -1,12 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://cq3k6rkdaodm3"]
+[gd_scene load_steps=7 format=3 uid="uid://cq3k6rkdaodm3"]
 
 [ext_resource type="Script" uid="uid://fbae0ss7bgvp" path="res://Scripts/Enemy.gd" id="1_tx8ge"]
 [ext_resource type="Texture2D" uid="uid://hfdyalwrd4fo" path="res://Assets/Images/tmpChar3.png" id="2_4ar56"]
 [ext_resource type="PackedScene" uid="uid://udmb4o84e268" path="res://Scenes/Components/health_component.tscn" id="2_tx8ge"]
 [ext_resource type="PackedScene" uid="uid://d1c647ei54b7c" path="res://Scenes/Components/defence_component.tscn" id="3_4ar56"]
 [ext_resource type="PackedScene" uid="uid://k0160xghyww" path="res://Scenes/Components/selection_area_2d.tscn" id="4_hroqg"]
-[ext_resource type="PackedScene" uid="uid://birxbul7fckrc" path="res://Scenes/Components/enemy_ability_picker.tscn" id="6_hroqg"]
-[ext_resource type="Script" uid="uid://1xwg1bl4y6vg" path="res://Scripts/EnemyAbilities/test_attack_ability.gd" id="7_ny53q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ny53q"]
 size = Vector2(123, 220)
@@ -30,13 +28,6 @@ shape = SubResource("RectangleShape2D_ny53q")
 defence_component = NodePath("../DefenceComponent")
 
 [node name="DefenceComponent" parent="." instance=ExtResource("3_4ar56")]
-
-[node name="EnemyAbilityPicker" parent="." instance=ExtResource("6_hroqg")]
-
-[node name="TestAttackAbility" type="Node" parent="EnemyAbilityPicker"]
-script = ExtResource("7_ny53q")
-type = 1
-weight = 1
 
 [node name="HPLabel" type="Label" parent="."]
 offset_left = -18.0

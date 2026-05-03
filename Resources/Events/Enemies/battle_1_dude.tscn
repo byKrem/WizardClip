@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://nulgtuibfjh4"]
+[gd_scene load_steps=3 format=3 uid="uid://nulgtuibfjh4"]
 
 [ext_resource type="PackedScene" uid="uid://cq3k6rkdaodm3" path="res://Scenes/Entities/enemy.tscn" id="1_52ew1"]
+[ext_resource type="Resource" uid="uid://dt4nnaj7f1g3n" path="res://Resources/Entities/base_dude.tres" id="2_8lnxo"]
 
 [node name="battle1dude" type="Node2D"]
 
 [node name="Enemy" parent="." instance=ExtResource("1_52ew1")]
 position = Vector2(942, 167)
+stats = ExtResource("2_8lnxo")

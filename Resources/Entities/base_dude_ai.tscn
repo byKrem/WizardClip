@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://cl7m2unxiw3gm"]
+
+[ext_resource type="Script" uid="uid://c01n3to8dn0nx" path="res://Scenes/Components/enemy_ability_picker.gd" id="1_isdlp"]
+[ext_resource type="Script" uid="uid://1xwg1bl4y6vg" path="res://Scripts/EnemyAbilities/test_attack_ability.gd" id="2_aun1h"]
+
+[node name="BaseDudeAbilityPicker" type="Node"]
+script = ExtResource("1_isdlp")
+metadata/_custom_type_script = "uid://c01n3to8dn0nx"
+
+[node name="SimpleAttackAbility" type="Node" parent="."]
+script = ExtResource("2_aun1h")
+type = 1
