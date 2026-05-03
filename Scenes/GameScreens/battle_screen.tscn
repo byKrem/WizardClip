@@ -61,13 +61,6 @@ offset_right = 1080.0
 offset_bottom = 567.0
 text = "End turn"
 
-[node name="Label" type="Label" parent="UI"]
-offset_left = 219.0
-offset_top = 362.0
-offset_right = 259.0
-offset_bottom = 385.0
-text = "Hp: 5"
-
 [node name="AbilitiesMenu" parent="UI" instance=ExtResource("7_anwhw")]
 offset_top = 388.0
 offset_right = -824.0

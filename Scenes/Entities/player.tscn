@@ -16,7 +16,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Player" type="Node2D"]
+[node name="Player" type="Node2D" groups=["player"]]
 script = ExtResource("1_nqm6o")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -27,3 +27,10 @@ sprite_frames = SubResource("SpriteFrames_svftf")
 defence_component = NodePath("../DefenceComponent")
 
 [node name="DefenceComponent" parent="." instance=ExtResource("4_svftf")]
+
+[node name="HPLabel" type="Label" parent="."]
+offset_left = -18.0
+offset_top = 184.0
+offset_right = 22.0
+offset_bottom = 207.0
+text = "HP: 5"

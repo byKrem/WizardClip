@@ -31,6 +31,7 @@ func pick_conditional() -> EnemyAbility:
 	for ability : EnemyAbility in get_children():
 		if ability != null and ability.type == EnemyAbility.Type.CONDITIONAL:
 			if ability.is_applicapable():
+				ability.target = get_tree().get_nodes_in_group("player").pop_back()
 				return ability
 	
 	return null
@@ -40,7 +41,8 @@ func pick_chancebased() -> EnemyAbility:
 	
 	for ability : EnemyAbility in get_children():
 		if ability != null and ability.type == EnemyAbility.Type.CHANCEBASED:
-			if roll < ability.accumulated_weight:
+			if roll <= ability.accumulated_weight:
+				ability.target = get_tree().get_nodes_in_group("player").pop_back()
 				return ability
 	
 	return null

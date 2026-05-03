@@ -24,6 +24,7 @@ func _ready() -> void:
 
 func _on_enemy_died() -> void:
 	if enemies_subnode.get_child_count() - 1 <= 0:
+		EventBus.battle_victory.emit()
 		print("Victory!")
 
 func start_battle() -> void:
@@ -32,6 +33,8 @@ func start_battle() -> void:
 	enemies_subnode = node
 	
 	self.add_child(node)
+	
+	EventBus.turn_start.emit()
 
 func _use_selected_clip() -> void:
 	if selected_clip == null or selected_enemy == null:
@@ -67,3 +70,9 @@ func _on_button_pressed() -> void:
 		selected_clip = null
 	# selected_enemy.set_selected(false)
 	selected_enemy = null
+	
+	EventBus.turn_end.emit()
+	
+	
+	
+	EventBus.turn_start.emit()
