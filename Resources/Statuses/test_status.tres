@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="TestStatus" load_steps=3 format=3 uid="uid://85t3xyvel1l2"]
+
+[ext_resource type="Script" uid="uid://n3iy24vc2j5m" path="res://Resources/Statuses/test_status.gd" id="1_wvq8a"]
+[ext_resource type="Texture2D" uid="uid://cu3q3ptx4mhay" path="res://Assets/Images/lock.png" id="2_2mljk"]
+
+[resource]
+script = ExtResource("1_wvq8a")
+id = "test"
+sprite = ExtResource("2_2mljk")
+duration = 2
+intencity = 0
+stack_type = 1
+can_expire = true
+description = "instakill"
+metadata/_custom_type_script = "uid://n3iy24vc2j5m"

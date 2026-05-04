@@ -6,6 +6,7 @@ extends Node
 @onready var hp_label: Label = $HPLabel
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var collision_shape_2d: CollisionShape2D = $SelectionArea2D/CollisionShape2D
+@onready var status_handler: StatusHandler = $StatusHandler
 
 @export var stats : EnemyStats
 
@@ -29,6 +30,7 @@ func _ready() -> void:
 	EventBus.turn_start.connect(_pick_ability)
 	EventBus.turn_end.connect(_use_intended_ability)
 	health_component.health_changed.connect(_update_ui)
+	
 
 func _update_ui(old_hp, new_hp) -> void:
 	hp_label.text = "HP: " + str(new_hp)

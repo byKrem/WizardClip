@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://c2dd1rl2jugl0"]
+[gd_scene load_steps=7 format=3 uid="uid://c2dd1rl2jugl0"]
 
 [ext_resource type="Script" uid="uid://b2k5luvuwc0p" path="res://Scripts/Player.gd" id="1_nqm6o"]
 [ext_resource type="Texture2D" uid="uid://kg25mk8ocp3g" path="res://Assets/Images/tmpChar2.png" id="2_qbyki"]
 [ext_resource type="PackedScene" uid="uid://udmb4o84e268" path="res://Scenes/Components/health_component.tscn" id="3_qbyki"]
 [ext_resource type="PackedScene" uid="uid://d1c647ei54b7c" path="res://Scenes/Components/defence_component.tscn" id="4_svftf"]
+[ext_resource type="PackedScene" uid="uid://ba2vox1ft5jjn" path="res://Scenes/Components/status_handler.tscn" id="5_a1rq5"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_svftf"]
 animations = [{
@@ -34,3 +35,5 @@ offset_top = 184.0
 offset_right = 22.0
 offset_bottom = 207.0
 text = "HP: 5"
+
+[node name="StatusHandler" parent="." instance=ExtResource("5_a1rq5")]

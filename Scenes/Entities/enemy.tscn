@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://cq3k6rkdaodm3"]
+[gd_scene load_steps=8 format=3 uid="uid://cq3k6rkdaodm3"]
 
 [ext_resource type="Script" uid="uid://fbae0ss7bgvp" path="res://Scripts/Enemy.gd" id="1_tx8ge"]
 [ext_resource type="Texture2D" uid="uid://hfdyalwrd4fo" path="res://Assets/Images/tmpChar3.png" id="2_4ar56"]
 [ext_resource type="PackedScene" uid="uid://udmb4o84e268" path="res://Scenes/Components/health_component.tscn" id="2_tx8ge"]
 [ext_resource type="PackedScene" uid="uid://d1c647ei54b7c" path="res://Scenes/Components/defence_component.tscn" id="3_4ar56"]
 [ext_resource type="PackedScene" uid="uid://k0160xghyww" path="res://Scenes/Components/selection_area_2d.tscn" id="4_hroqg"]
+[ext_resource type="PackedScene" uid="uid://ba2vox1ft5jjn" path="res://Scenes/Components/status_handler.tscn" id="6_4ar56"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ny53q"]
 size = Vector2(123, 220)
@@ -35,3 +36,7 @@ offset_top = 184.0
 offset_right = 22.0
 offset_bottom = 207.0
 text = "HP: 5"
+
+[node name="StatusHandler" parent="." instance=ExtResource("6_4ar56")]
+offset_top = 229.0
+offset_bottom = 233.0
