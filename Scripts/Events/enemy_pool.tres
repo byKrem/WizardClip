@@ -1,11 +1,12 @@
-[gd_resource type="Resource" script_class="EnemyEventsPool" load_steps=5 format=3 uid="uid://la88i0sfmscs"]
+[gd_resource type="Resource" script_class="EnemyEventsPool" load_steps=6 format=3 uid="uid://la88i0sfmscs"]
 
 [ext_resource type="Script" uid="uid://kmlv52ex4wiq" path="res://Scripts/battle_stats.gd" id="1_qotuo"]
 [ext_resource type="Script" uid="uid://cufncyolhxjmg" path="res://Scripts/Events/enemies_events_pool.gd" id="2_ouobo"]
 [ext_resource type="Resource" uid="uid://cwipcqsy4pm1q" path="res://Resources/Events/Enemies/battle_1_dude.tres" id="2_ycc4w"]
 [ext_resource type="Resource" uid="uid://b2jwixx8ht5cg" path="res://Resources/Events/Enemies/battle_2_dudes.tres" id="3_u2i3k"]
+[ext_resource type="Resource" uid="uid://bvkh54di8aeto" path="res://Resources/Events/Enemies/battle_1_little_boar.tres" id="4_ycc4w"]
 
 [resource]
 script = ExtResource("2_ouobo")
-enemy_events = Array[ExtResource("1_qotuo")]([ExtResource("2_ycc4w"), ExtResource("3_u2i3k")])
+enemy_events = Array[ExtResource("1_qotuo")]([ExtResource("4_ycc4w"), ExtResource("3_u2i3k"), ExtResource("2_ycc4w")])
 metadata/_custom_type_script = "uid://cufncyolhxjmg"

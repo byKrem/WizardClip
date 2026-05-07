@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bdoee1ydoljla"]
+
+[ext_resource type="PackedScene" uid="uid://cq3k6rkdaodm3" path="res://Scenes/Entities/enemy.tscn" id="1_rgk1w"]
+[ext_resource type="Resource" uid="uid://umsvxl4mo8yx" path="res://Resources/Entities/little_boar.tres" id="2_38hpn"]
+
+[node name="battle_1_little_boar" type="Node2D"]
+
+[node name="Enemy" parent="." instance=ExtResource("1_rgk1w")]
+position = Vector2(949, 228)
+stats = ExtResource("2_38hpn")

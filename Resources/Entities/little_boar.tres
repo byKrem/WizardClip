@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="EnemyStats" load_steps=4 format=3 uid="uid://umsvxl4mo8yx"]
+
+[ext_resource type="Script" uid="uid://cqhd5j3im0h8s" path="res://Scripts/Entities/Stats/EnemyStats.gd" id="1_2tpur"]
+[ext_resource type="PackedScene" uid="uid://cu06mmsw8ruxo" path="res://Resources/Entities/little_boar_ai.tscn" id="1_akhye"]
+[ext_resource type="Texture2D" uid="uid://cftpd2b8v1153" path="res://Assets/Images/little_boar.png" id="3_i603t"]
+
+[resource]
+script = ExtResource("1_2tpur")
+enemy_ai = ExtResource("1_akhye")
+max_health = 3
+sprite = ExtResource("3_i603t")
+metadata/_custom_type_script = "uid://cqhd5j3im0h8s"

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="BattleStats" load_steps=3 format=3 uid="uid://bvkh54di8aeto"]
+
+[ext_resource type="PackedScene" uid="uid://bdoee1ydoljla" path="res://Resources/Events/Enemies/battle_1_little_boar.tscn" id="1_ktw3m"]
+[ext_resource type="Script" uid="uid://kmlv52ex4wiq" path="res://Scripts/battle_stats.gd" id="1_lxrxe"]
+
+[resource]
+script = ExtResource("1_lxrxe")
+battle_tier = 0
+weight = 7.0
+enemies = ExtResource("1_ktw3m")
+metadata/_custom_type_script = "uid://kmlv52ex4wiq"

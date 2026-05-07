@@ -1,0 +1,38 @@
+[gd_scene load_steps=9 format=3 uid="uid://cu06mmsw8ruxo"]
+
+[ext_resource type="Script" uid="uid://c01n3to8dn0nx" path="res://Scenes/Components/enemy_ability_picker.gd" id="1_xrlsk"]
+[ext_resource type="Script" uid="uid://ble5pwpmf4d34" path="res://Scripts/EnemyAbilities/tackle_enemy_ability.gd" id="2_5luyf"]
+[ext_resource type="Texture2D" uid="uid://erk05egjq024" path="res://Assets/Images/BaseAbilitiesSprites.png" id="3_hobus"]
+[ext_resource type="Script" uid="uid://bu6vki7gnustd" path="res://Scripts/EnemyAbilities/roar_enemy_ability.gd" id="3_vcjcr"]
+[ext_resource type="Script" uid="uid://coklk3wga6kqg" path="res://Scripts/EnemyAbilities/whining_enemy_ability.gd" id="4_rnlih"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wl33k"]
+atlas = ExtResource("3_hobus")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hobus"]
+atlas = ExtResource("3_hobus")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yhths"]
+atlas = ExtResource("3_hobus")
+region = Rect2(0, 0, 16, 16)
+
+[node name="LittleBoarAbilityPicker" type="Node"]
+script = ExtResource("1_xrlsk")
+metadata/_custom_type_script = "uid://c01n3to8dn0nx"
+
+[node name="TackleEnemyAbility" type="Node" parent="."]
+script = ExtResource("2_5luyf")
+icon = SubResource("AtlasTexture_wl33k")
+type = 1
+weight = 4
+
+[node name="RoarEnemyAbility" type="Node" parent="."]
+script = ExtResource("3_vcjcr")
+icon = SubResource("AtlasTexture_hobus")
+type = 1
+
+[node name="WhiningEnemyAbility" type="Node" parent="."]
+script = ExtResource("4_rnlih")
+icon = SubResource("AtlasTexture_yhths")
