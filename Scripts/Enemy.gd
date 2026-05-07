@@ -7,8 +7,12 @@ extends Node
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var collision_shape_2d: CollisionShape2D = $SelectionArea2D/CollisionShape2D
 @onready var status_handler: StatusHandler = $StatusHandler
+@onready var enemy_intention: EnemyIntentionUI = $EnemyIntention
 
 @export var stats : EnemyStats
+
+var out_flat_damage : Array[int]
+var out_percentage_damage : Array[float]
 
 var intended_ability: EnemyAbility
 var ability_picker: EnemyAbilityPicker
@@ -25,6 +29,7 @@ func _ready() -> void:
 		var picker = stats.enemy_ai.instantiate()
 		add_child(picker)
 		ability_picker = picker
+		ability_picker.enemy = self
 	
 	health_component.health_run_out.connect(_on_health_run_out)
 	EventBus.turn_start.connect(_pick_ability)
@@ -37,9 +42,20 @@ func _update_ui(old_hp, new_hp) -> void:
 
 func _pick_ability() -> void:
 	intended_ability = ability_picker.pick_ability()
+	enemy_intention.set_intention(intended_ability)
 
 func _use_intended_ability() -> void:
 	intended_ability.apply()
+
+func affect_outcome_damage(damage : int) -> int:
+	for flat_mod in out_flat_damage:
+		damage += flat_mod
+	
+	var total_percantage : float  = 0.0
+	for percantage_mod in out_percentage_damage:
+		total_percantage += percantage_mod
+	
+	return damage * (1.0 + total_percantage)
 
 func _on_health_run_out() -> void:
 	EventBus.enemy_died.emit()

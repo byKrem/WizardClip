@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=3 uid="uid://cxl5cxc14n526"]
+
+[ext_resource type="Script" uid="uid://citweupnlbieu" path="res://Scenes/UI/enemy_intention_ui.gd" id="1_ui1eo"]
+[ext_resource type="Texture2D" uid="uid://erk05egjq024" path="res://Assets/Images/BaseAbilitiesSprites.png" id="2_hxgk7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_toffw"]
+atlas = ExtResource("2_hxgk7")
+region = Rect2(0, 16, 16, 16)
+
+[node name="EnemyIntention" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ui1eo")
+
+[node name="Icon" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = SubResource("AtlasTexture_toffw")
+
+[node name="DamageLabel" type="Label" parent="Icon"]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -23.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "5"
+horizontal_alignment = 2
+vertical_alignment = 1

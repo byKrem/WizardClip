@@ -23,5 +23,4 @@ func set_intencity(new_val : int):
 	status_changed.emit(self)
 
 func apply_status(_target: Node) -> void:
-	pass
-	# _target.heath_compent.damage_taken_multiplier = 1.5
+	pass # override this for every status effect

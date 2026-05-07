@@ -3,6 +3,8 @@ extends Node
 
 enum Type {CONDITIONAL, CHANCEBASED}
 
+@export var icon : Texture2D
+
 @export var type : Type
 @export_range(1,100,1) var weight : int
 var accumulated_weight : int = 0

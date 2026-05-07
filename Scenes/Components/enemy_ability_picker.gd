@@ -1,6 +1,8 @@
 class_name EnemyAbilityPicker
 extends Node
 
+var enemy : Enemy
+
 var total_weight : int = 0
 
 func _ready() -> void:
@@ -30,8 +32,9 @@ func pick_ability() -> EnemyAbility:
 func pick_conditional() -> EnemyAbility:
 	for ability : EnemyAbility in get_children():
 		if ability != null and ability.type == EnemyAbility.Type.CONDITIONAL:
+			ability.target = get_tree().get_nodes_in_group("player").pop_back()
+			ability.enemy = enemy
 			if ability.is_applicapable():
-				ability.target = get_tree().get_nodes_in_group("player").pop_back()
 				return ability
 	
 	return null
@@ -41,8 +44,9 @@ func pick_chancebased() -> EnemyAbility:
 	
 	for ability : EnemyAbility in get_children():
 		if ability != null and ability.type == EnemyAbility.Type.CHANCEBASED:
+			ability.target = get_tree().get_nodes_in_group("player").pop_back()
+			ability.enemy = enemy
 			if roll <= ability.accumulated_weight:
-				ability.target = get_tree().get_nodes_in_group("player").pop_back()
 				return ability
 	
 	return null
