@@ -12,19 +12,15 @@ signal overheal(value : int)
 
 @export_category("Connected Nodes")
 @export var defence_component: DefenceComponent
+@export var modifier_handler: ModifierHandler
 
 var _current_health : int = 5
-
-var in_damage_mods : Array[float]
 
 func _ready() -> void:
 	_current_health = max_health
 
 func take_damage(damage : int):
-	var increased_damage : float = 0.0
-	for mod in in_damage_mods:
-		increased_damage += mod
-	damage = damage * (1.0+increased_damage)
+	damage = modifier_handler.affect_type(Modifier.ModifierType.INCOME_DAMAGE, damage)
 	damage = defence_component.apply_defence(damage)
 	_set_health_value(_current_health - damage)
 

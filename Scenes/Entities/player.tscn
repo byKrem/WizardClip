@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://c2dd1rl2jugl0"]
+[gd_scene load_steps=8 format=3 uid="uid://c2dd1rl2jugl0"]
 
 [ext_resource type="Script" uid="uid://b2k5luvuwc0p" path="res://Scripts/Player.gd" id="1_nqm6o"]
 [ext_resource type="Texture2D" uid="uid://kg25mk8ocp3g" path="res://Assets/Images/tmpChar2.png" id="2_qbyki"]
 [ext_resource type="PackedScene" uid="uid://udmb4o84e268" path="res://Scenes/Components/health_component.tscn" id="3_qbyki"]
 [ext_resource type="PackedScene" uid="uid://d1c647ei54b7c" path="res://Scenes/Components/defence_component.tscn" id="4_svftf"]
 [ext_resource type="PackedScene" uid="uid://ba2vox1ft5jjn" path="res://Scenes/Components/status_handler.tscn" id="5_a1rq5"]
+[ext_resource type="PackedScene" uid="uid://db4xehiw76j2e" path="res://Scenes/Components/modifier_handler.tscn" id="6_yqx0t"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_svftf"]
 animations = [{
@@ -24,8 +25,9 @@ script = ExtResource("1_nqm6o")
 scale = Vector2(10.5, 10.5)
 sprite_frames = SubResource("SpriteFrames_svftf")
 
-[node name="HealthComponent" parent="." node_paths=PackedStringArray("defence_component") instance=ExtResource("3_qbyki")]
+[node name="HealthComponent" parent="." node_paths=PackedStringArray("defence_component", "modifier_handler") instance=ExtResource("3_qbyki")]
 defence_component = NodePath("../DefenceComponent")
+modifier_handler = NodePath("../ModifierHandler")
 
 [node name="DefenceComponent" parent="." instance=ExtResource("4_svftf")]
 
@@ -39,3 +41,5 @@ text = "HP: 5"
 [node name="StatusHandler" parent="." instance=ExtResource("5_a1rq5")]
 offset_top = 233.0
 offset_bottom = 237.0
+
+[node name="ModifierHandler" parent="." instance=ExtResource("6_yqx0t")]

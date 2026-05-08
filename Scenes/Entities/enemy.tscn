@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cq3k6rkdaodm3"]
+[gd_scene load_steps=10 format=3 uid="uid://cq3k6rkdaodm3"]
 
 [ext_resource type="Script" uid="uid://fbae0ss7bgvp" path="res://Scripts/Enemy.gd" id="1_tx8ge"]
 [ext_resource type="Texture2D" uid="uid://hfdyalwrd4fo" path="res://Assets/Images/tmpChar3.png" id="2_4ar56"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://k0160xghyww" path="res://Scenes/Components/selection_area_2d.tscn" id="4_hroqg"]
 [ext_resource type="PackedScene" uid="uid://ba2vox1ft5jjn" path="res://Scenes/Components/status_handler.tscn" id="6_4ar56"]
 [ext_resource type="PackedScene" uid="uid://cxl5cxc14n526" path="res://Scenes/UI/enemy_intention_ui.tscn" id="7_hroqg"]
+[ext_resource type="PackedScene" uid="uid://db4xehiw76j2e" path="res://Scenes/Components/modifier_handler.tscn" id="8_ny53q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ny53q"]
 size = Vector2(123, 220)
@@ -26,8 +27,9 @@ group_name = "selected_enemy"
 position = Vector2(-0.5, 40)
 shape = SubResource("RectangleShape2D_ny53q")
 
-[node name="HealthComponent" parent="." node_paths=PackedStringArray("defence_component") instance=ExtResource("2_tx8ge")]
+[node name="HealthComponent" parent="." node_paths=PackedStringArray("defence_component", "modifier_handler") instance=ExtResource("2_tx8ge")]
 defence_component = NodePath("../DefenceComponent")
+modifier_handler = NodePath("../ModifierHandler")
 
 [node name="DefenceComponent" parent="." instance=ExtResource("3_4ar56")]
 
@@ -47,3 +49,5 @@ offset_left = -18.0
 offset_top = -123.0
 offset_right = -18.0
 offset_bottom = -123.0
+
+[node name="ModifierHandler" parent="." instance=ExtResource("8_ny53q")]

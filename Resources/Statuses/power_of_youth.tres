@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="PowerOfYouth" load_steps=4 format=3 uid="uid://dh03ni8hx5127"]
+
+[ext_resource type="Script" uid="uid://by2knv3x8pmir" path="res://Scripts/StatusEffects/power_of_youth_status.gd" id="1_os7da"]
+[ext_resource type="Texture2D" uid="uid://erk05egjq024" path="res://Assets/Images/BaseAbilitiesSprites.png" id="2_4lvf0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bruc6"]
+atlas = ExtResource("2_4lvf0")
+region = Rect2(16, 0, 16, 16)
+
+[resource]
+script = ExtResource("1_os7da")
+id = "power_of_youth"
+sprite = SubResource("AtlasTexture_bruc6")
+duration = 0
+intencity = 0
+stack_type = 0
+can_expire = false
+force_apply = true
+description = "Take 50% less damage"
+metadata/_custom_type_script = "uid://by2knv3x8pmir"
